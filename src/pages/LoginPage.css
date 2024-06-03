@@ -1,0 +1,68 @@
+/*
+#fbfbf4         white
+#f5e3d6         cream
+#a5cbd9         light blue
+#15001a         dark purple
+*/
+
+.login-page .login-container {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border:#f5e3d6 5px solid;
+    background-color: #f5e3d6;
+    margin-top: 3%;
+}
+
+.login-page h2 {
+    margin-bottom: 20px;
+    color: #15001a;
+}
+
+.login-page .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.login-page .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #15001a;
+}
+
+.login-page .form-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #fbfbf4;
+    background-color: #fbfbf4;
+    color: #15001a;
+    border-radius: 5px;
+}
+
+.login-page button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    color:#15001a;
+    background-color:#a5cbd9;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-page button:hover {
+    background-color: #7aacbd;
+}
+
+.login-page .redirect-text a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-page .redirect-text a:hover {
+    text-decoration: underline;
+}

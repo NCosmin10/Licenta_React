@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import NumberMemoryGame from './pages/Games/NumberMemoryGame';
+import ReactionTimeGame from './pages/Games/ReactionTimeGame';
+import VerbalMemoryGame from './pages/Games/VerbalMemoryGame';
+import ReactionTimeStats from './pages/Stats/ReactionTimeStats';
+import Dashboard from './pages/Stats/Dashboard';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/reaction-time-game" element={<ReactionTimeGame />} />
+        <Route path="/number-memory-game" element={<NumberMemoryGame />} />
+        <Route path="/verbal-memory-game" element={<VerbalMemoryGame />} />
+        <Route path="/reaction-time-stats" element={<ReactionTimeStats />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
   );
 }
 

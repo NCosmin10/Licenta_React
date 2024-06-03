@@ -1,0 +1,65 @@
+/*
+#fbfbf4         white
+#f5e3d6         cream
+#a5cbd9         light blue
+#15001a         dark purple
+*/
+
+body {
+  background-color: #a5cbd9; 
+}
+
+.home-page .home-container {
+  text-align: center;
+  margin-top: 50px;
+  font-family: Arial, sans-serif;
+  /*background-color: #fbfbf4;
+  margin-bottom: 10%;*/
+}
+
+.home-page h1 {
+  font-size: 2.5em;
+  color: #15001a;
+  margin-bottom: 10px;
+}
+
+.home-page hr {
+  width: 50%;
+  margin: 0 auto 30px;
+  border: 1px solid #fbfbf4;
+}
+
+.home-page p {
+  font-size: 1.2em;
+  color: #15001a;
+  margin-bottom: 30px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.home-page .button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; 
+}
+
+.home-page .button-container button {
+  margin: 10px 0;
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #fbfbf4;
+  color: #15001a;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  width: 150px; 
+  max-width: 150px; 
+  box-sizing: border-box; 
+}
+
+.home-page .button-container button:hover {
+  background-color: #f5e3d6;
+  color: #15001a ;
+}
