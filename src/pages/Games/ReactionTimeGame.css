@@ -1,0 +1,112 @@
+/*
+#fbfbf4         white
+#f5e3d6         cream
+#a5cbd9         light blue
+#15001a         dark purple
+*/
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+}
+
+.game-area {
+    flex: 1;
+    background-color: #fbfbf4 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: yellow;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.game-area:hover {
+    background-color: #f5e3d6  !important;
+}
+
+.game-area h2 {
+    margin: 0;
+    font-size: 2em;
+    color: #15001a;
+}
+
+.game-area p {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+.get-ready {
+    color: red; /* Change this to your preferred color */
+}
+
+.click-now {
+    color: green; /* Change this to your preferred color */
+}
+
+.too-soon {
+    color: #a5cbd9; /* Change this to your preferred color */
+}
+
+.click-to-start {
+    color: #15001a; /* Change this to your preferred color */
+}
+
+.reaction-time,
+.average-time {
+    color: #15001a; /* Change this to your preferred color */
+}
+
+.lower-section {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.left-section{
+    flex: 1;
+    background-color: #fbfbf4 !important;
+    padding: 20px;
+    /*margin: 10px;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #15001a  !important; /*NU SE SCHIMBA*/
+    font-size: 1em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 5% !important;
+}
+
+.right-section {
+    flex: 1;
+    background-color: #fbfbf4 !important;
+    padding: 20px;
+    /*margin: 10px;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #15001a  !important; /*NU SE SCHIMBA*/
+    font-size: 1em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 5% !important;
+}
+
+.left-section {
+    margin-right: 5px;
+}
+
+.right-section {
+    margin-left: 5px;
+}
