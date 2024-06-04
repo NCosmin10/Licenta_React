@@ -1,12 +1,13 @@
 import React from 'react';
 import Layout from '../../components/Layout2';
 import './Dashboard.css';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
     const games = [
-        { name: 'Reaction Time', avgScore: 150, bestScore: 200, communityScore: 180 },
-        { name: 'Number Memory', avgScore: 120, bestScore: 170, communityScore: 140 },
-        // Add more games as needed
+        { name: 'Reaction Time', avgScore: 150, bestScore: 200, communityScore: 180, linkGame:'/reaction-time-game', linkStats:'/reaction-time-stats'},
+        { name: 'Number Memory', avgScore: 120, bestScore: 170, communityScore: 140, linkGame:'/number-memory-game', linkStats:'/number-memory-stats'},
+        { name: 'Verbal Memory', avgScore: 120, bestScore: 170, communityScore: 140, linkGame:'/verbal-memory-game', linkStats:'/verbal-memory-stats'},
     ];
 
     return (
@@ -21,12 +22,22 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div className="stats-container">
+                    <div className='stats-row'>
+                        <div className="stats-item">Game</div>
+                        <div className="stats-item">Personal Average Score</div>
+                        <div className="stats-item">Personal Best Score</div>
+                        <div className="stats-item">Community Average Score</div>
+                        <div className="stats-item">Play Game</div>
+                        <div className="stats-item">See Statistics</div>
+                    </div>
                     {games.map((game, index) => (
                         <div key={index} className="stats-row">
                             <div className="stats-item">{game.name}</div>
-                            <div className="stats-item">Avg Score: {game.avgScore}</div>
-                            <div className="stats-item">Best Score: {game.bestScore}</div>
-                            <div className="stats-item">Community Score: {game.communityScore}</div>
+                            <div className="stats-item">{game.avgScore}</div>
+                            <div className="stats-item">{game.bestScore}</div>
+                            <div className="stats-item">{game.communityScore}</div>
+                            <div className="stats-item"><Link to={game.linkGame}>Play</Link></div>
+                            <div className="stats-item"><Link to={game.linkStats}>Stats</Link></div>
                         </div>
                     ))}
                 </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../../components/Layout2';
 import './GamesDB.css';
 
-const ReactionTimeDB = () => {
+const VerbalMemoryDB = () => {
     const gameHistory = [
         { date: '2024-06-01', time: '12:00', score: 150 },
         { date: '2024-06-02', time: '13:00', score: 140 },
@@ -16,7 +16,7 @@ const ReactionTimeDB = () => {
             <div className="reaction-time-dashboard-container">
                 <div className="top-container">
                     <h2>User Name</h2>
-                    <h3>Reaction Time</h3>
+                    <h3>Verbal Memory</h3>
                     <div className="button-group">
                         <button className="action-button">Logout</button>
                         <button className="action-button">Another Button</button>
@@ -43,4 +43,4 @@ const ReactionTimeDB = () => {
     );
 }
 
-export default ReactionTimeDB;
+export default VerbalMemoryDB;

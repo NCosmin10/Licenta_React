@@ -1,18 +1,11 @@
-/*
-#fbfbf4         white
-#f5e3d6         cream
-#a5cbd9         light blue
-#15001a         dark purple
-*/
-
-.dashboard-container {
+.gamesDB .reaction-time-dashboard-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
 }
 
-.top-container {
+.gamesDB .top-container {
     background-color: #f5e3d6; /* Adjust color as needed */
     padding: 20px;
     border-radius: 10px;
@@ -22,18 +15,18 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.top-container h2 {
+.gamesDB .top-container h2, .top-container h3 {
     margin: 10px 0;
     color: #15001a; /* Adjust color as needed */
 }
 
-.button-group {
+.gamesDB .button-group {
     display: flex;
     justify-content: center;
     margin-top: 10px;
 }
 
-.action-button {
+.gamesDB .action-button {
     margin: 0 10px;
     padding: 10px 20px;
     background-color: #15001a;
@@ -44,11 +37,31 @@
     transition: background-color 0.3s ease;
 }
 
-.action-button:hover {
+.gamesDB .action-button:hover {
     background-color: #323032;
 }
 
-.stats-container {
+.gamesDB .stats-container {
+    background-color: #fbfbf4; /* Adjust color as needed */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 60%; /* Adjust width as needed */
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+}
+
+.gamesDB .stats-item {
+    margin: 10px 0;
+    font-weight: bold;
+    color: #15001a; /* Adjust color as needed */
+    flex: 1;
+    text-align: center;
+}
+
+.gamesDB .history-container {
     background-color: #fbfbf4; /* Adjust color as needed */
     padding: 20px;
     border-radius: 10px;
@@ -57,20 +70,24 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.stats-row {
+.gamesDB .history-container h3 {
+    color: #15001a; /* Adjust color as needed */
+    margin-bottom: 20px;
+}
+
+.gamesDB .history-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     padding: 10px;
     background-color: #a5cbd9; /* Adjust color as needed */
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    color: #15001a; /* Adjust color as needed */
 }
 
-.stats-item {
+.gamesDB .history-item {
     flex: 1;
     text-align: center;
     margin: 0 10px;
-    font-weight: bold;
+    color: #15001a; /* Adjust color as needed */
 }
