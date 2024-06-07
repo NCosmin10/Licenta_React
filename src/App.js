@@ -8,6 +8,8 @@ import RegisterPage from './pages/RegisterPage';
 import NumberMemoryGame from './pages/Games/NumberMemoryGame';
 import ReactionTimeGame from './pages/Games/ReactionTimeGame';
 import VerbalMemoryGame from './pages/Games/VerbalMemoryGame';
+import HigherLowerGame from './pages/Games/HigherLowerGame';
+import ArithmeticGame from './pages/Games/ArithmeticGame';
 import Dashboard from './pages/Stats/Dashboard';
 import ReactionTimeDB from './pages/Stats/ReactionTimeDB';
 import NumberMemoryDB from './pages/Stats/NumberMemoryDB';
@@ -23,6 +25,8 @@ function App() {
         <Route path="/reaction-time-game" element={<ReactionTimeGame />} />
         <Route path="/number-memory-game" element={<NumberMemoryGame />} />
         <Route path="/verbal-memory-game" element={<VerbalMemoryGame />} />
+        <Route path="/higher-lower-game" element={<HigherLowerGame />} />
+        <Route path="/arithmetic-game" element={<ArithmeticGame />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/reaction-time-stats" element={<ReactionTimeDB />} />
         <Route path="/number-memory-stats" element={<NumberMemoryDB />} />

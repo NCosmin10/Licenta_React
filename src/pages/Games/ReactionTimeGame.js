@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../../components/Layout';
 import './ReactionTimeGame.css';
+import axios from 'axios';
 
 const ReactionTimeGame = () => {
     const [message, setMessage] = useState('Click to Start');
@@ -49,6 +50,30 @@ const ReactionTimeGame = () => {
             const averageTime = reactionTimes.reduce((a, b) => a + b, 0) / reactionTimes.length;
             setMessage(`Average Reaction Time: ${averageTime.toFixed(2)} ms`);
             setReactionTimes([]); // Reset reaction times
+
+            // Save the average time to the backend
+            const saveScore = async () => {
+                const token = localStorage.getItem('authToken');
+                const username = localStorage.getItem('username');
+
+                try {
+                    await axios.post('http://localhost:8080/scoreSave', {
+                        username: username,
+                        score: averageTime,
+                        gameId: 1,
+                    }, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+                    alert('Score saved successfully');
+                } catch (error) {
+                    console.error('Error saving the score:', error);
+                    alert('Failed to save score');
+                }
+            };
+
+            saveScore();
         }
     }, [reactionTimes]);
 

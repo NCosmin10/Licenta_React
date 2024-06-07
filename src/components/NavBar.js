@@ -16,6 +16,8 @@ const NavBar = () => {
                 <li className="square-bullet"><Link to="/reaction-time-game">Reaction Time</Link></li>
                 <li className="square-bullet"><Link to="/number-memory-game">Number Memory</Link></li>
                 <li className="square-bullet"><Link to="/verbal-memory-game">Verbal Memory</Link></li>
+                <li className="square-bullet"><Link to="/higher-lower-game">Higher or Lower</Link></li>
+                <li className="square-bullet"><Link to="/arithmetic-game">Arithmetic</Link></li>
             </ul>
         </nav>
     );
