@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../../components/Layout';
 import './NumberMemoryGame.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const NumberMemoryGame = () => {
     const [numberToShow, setNumberToShow] = useState('');
@@ -18,7 +19,7 @@ const NumberMemoryGame = () => {
         const username = localStorage.getItem('username');
 
         try {
-            await axios.post('http://localhost:8080/scoreSave', {
+            await axios.post('http://localhost:8080/score/save', {
                 username: username,
                 score: score,
                 gameId: 2,
@@ -127,10 +128,19 @@ const NumberMemoryGame = () => {
                 </div>
                 <div className="lower-section">
                     <div className="left-section">
-                        <p>Try to remember the number shown on the screen.</p>
+                        <p>How to play:
+                            <br />1. Click the button to start the game.
+                            <br />2. Remember the number shown on the screen.
+                            <br />3. Type the number in the input box.
+                            <br />4. If you type the correct number, the next number will have one more digit.
+                            <br />5. If you type the wrong number, the game will end.
+                        </p>
                     </div>
                     <div className="right-section">
-                        <p>The number will disappear after a few seconds, and you will have to type it.</p>
+                        <p>About the test:
+                            <br />The average person can only remember 7 digit numbers reliably, but it's possible to do much better 
+                            using <Link to='https://en.wikipedia.org/wiki/Mnemonic'>mnemonic techniques</Link>.
+                        </p>
                     </div>
                 </div>
             </div>

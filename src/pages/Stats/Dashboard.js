@@ -1,19 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../../components/Layout2';
 import './Dashboard.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Dashboard = () => {
+    const [games, setGames] = useState([]);
     const token = localStorage.getItem('authToken');
     const username = localStorage.getItem('username');
     const navigate = useNavigate();
 
-    const games = [
-        { name: 'Reaction Time', avgScore: 150, bestScore: 200, communityScore: 180, linkGame:'/reaction-time-game', linkStats:'/reaction-time-stats'},
-        { name: 'Number Memory', avgScore: 120, bestScore: 170, communityScore: 140, linkGame:'/number-memory-game', linkStats:'/number-memory-stats'},
-        { name: 'Verbal Memory', avgScore: 120, bestScore: 170, communityScore: 140, linkGame:'/verbal-memory-game', linkStats:'/verbal-memory-stats'},
-    ];
+    const gameUnits = {
+        "Reaction_Time": "ms",
+        "Number_Memory": "digits",
+        "Higher_Lower": "points",
+        "Arithmetic": "points"
+        // Add other games and their units here
+    };
+
+    useEffect(() => {
+        // Function to fetch data from the backend
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:8080/score/${username}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                if (response.status === 200) {
+                    const data = response.data;
+                    setGames(data);
+                } else {
+                    console.error('Failed to fetch scores:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error fetching scores:', error);
+            }
+        };
+
+        fetchData();
+    }, [token, username]);
 
     const handleLogout = () => {
         localStorage.removeItem('authToken');
@@ -28,7 +55,6 @@ const Dashboard = () => {
                     <h2>{username}</h2>
                     <div className="button-group">
                         <button className="action-button" onClick={handleLogout}>Logout</button>
-                        {/* Add more buttons as needed */}
                     </div>
                 </div>
                 <div className="stats-container">
@@ -42,12 +68,12 @@ const Dashboard = () => {
                     </div>
                     {games.map((game, index) => (
                         <div key={index} className="stats-row">
-                            <div className="stats-item">{game.name}</div>
-                            <div className="stats-item">{game.avgScore}</div>
-                            <div className="stats-item">{game.bestScore}</div>
-                            <div className="stats-item">{game.communityScore}</div>
-                            <div className="stats-item"><Link to={game.linkGame}>Play</Link></div>
-                            <div className="stats-item"><Link to={game.linkStats}>Stats</Link></div>
+                            <div className="stats-item">{game.gameName.replace(/_/g, ' ')}</div>
+                            <div className="stats-item">{`${game.personalAvgScore} ${gameUnits[game.gameName] || ''}`}</div>
+                            <div className="stats-item">{`${game.personalBestScore} ${gameUnits[game.gameName] || ''}`}</div>
+                            <div className="stats-item">{`${game.communityAvgScore} ${gameUnits[game.gameName] || ''}`}</div>
+                            <div className="stats-item"><Link to={`/game/${game.gameName.toLowerCase().replace(/\s+/g, '-').replace(/_/g, '-')}`}>Play</Link></div>
+                            <div className="stats-item"><Link to={`/stats/${game.gameName.toLowerCase().replace(/\s+/g, '-').replace(/_/g, '-')}`}>Stats</Link></div>
                         </div>
                     ))}
                 </div>

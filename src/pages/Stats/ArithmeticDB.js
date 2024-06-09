@@ -9,7 +9,7 @@ const ReactionTimeDB = () => {
     const token = localStorage.getItem('authToken');
     const username = localStorage.getItem('username');
     const navigate = useNavigate();
-    const gameId = 2;
+    const gameId = 4;
 
     useEffect(() => {
         // Function to fetch data from the backend
@@ -60,9 +60,9 @@ const ReactionTimeDB = () => {
                         </div>
                     </div>
                     <div className="stats-container">
-                        <div className="stats-item">Avg Score: {personalAvgScore} digits</div>
-                        <div className="stats-item">Best Score: {personalBestScore} digits</div>
-                        <div className="stats-item">Community Score: {communityAvgScore} digits</div>
+                        <div className="stats-item">Avg Score: {personalAvgScore} points</div>
+                        <div className="stats-item">Best Score: {personalBestScore} points</div>
+                        <div className="stats-item">Community Score: {communityAvgScore} points</div>
                     </div>
                     <div className="history-container">
                         <h3>Game History</h3>
@@ -70,7 +70,7 @@ const ReactionTimeDB = () => {
                             <div key={index} className="history-row">
                                 <div className="history-item">{new Date(date).toLocaleDateString()}</div>
                                 <div className="history-item">{new Date(date).toLocaleTimeString()}</div>
-                                <div className="history-item">{gameScores[index]} digits</div>
+                                <div className="history-item">{gameScores[index]} points</div>
                             </div>
                         ))}
                     </div>

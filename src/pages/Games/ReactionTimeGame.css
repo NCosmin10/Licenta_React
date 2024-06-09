@@ -107,6 +107,18 @@
     margin-right: 5px;
 }
 
+.left-section p {
+    margin: 0;
+    font: 1.5em sans-serif;
+    text-align: left;;
+}
+
 .right-section {
     margin-left: 5px;
+}
+
+.right-section p {
+    margin: 0;
+    font: 1.5em sans-serif;
+    text-align: left;
 }

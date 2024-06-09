@@ -20,7 +20,7 @@ const LoginPage = () => {
                 alert('Login successful');
                 localStorage.setItem('authToken', response.data.token);
                 localStorage.setItem('username', response.data.username);
-                navigate('/reaction-time-game');
+                navigate('/game/reaction-time');
             }
         } catch (error) {
             console.error('There was an error logging in!', error);

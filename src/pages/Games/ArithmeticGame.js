@@ -15,7 +15,7 @@ const ArithmeticGame = () => {
         const username = localStorage.getItem('username');
         
         try {
-            await axios.post('http://localhost:8080/scoreSave', {
+            await axios.post('http://localhost:8080/score/save', {
                 username: username,
                 score: score,
                 gameId: 4,
@@ -96,10 +96,18 @@ const ArithmeticGame = () => {
                 </div>
                 <div className="lower-section">
                     <div className="left-section">
-                        <p>Select the correct operator to complete the equation.</p>
+                        <p>How to play:
+                            <br />1. Click the button to start the game.
+                            <br />2. Solve the arithmetic equation displayed.
+                            <br />3. Click the operator button to submit your answer.
+                            <br />4. Your score will be based on the number of correct answers within 20 seconds.
+                        </p>
                     </div>
                     <div className="right-section">
-                        <p>Your score will be based on the number of correct answers within 20 seconds.</p>
+                        <p>About the game:
+                            <br />This game will test your arithmetic skills.
+                            <br /> It is designed to improve your mental math abilities and problem solving skills.
+                        </p>
                     </div>
                 </div>
             </div>

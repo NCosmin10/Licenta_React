@@ -8,7 +8,7 @@ const ReactionTimeGame = () => {
     const [gameState, setGameState] = useState('waiting'); // 'waiting', 'ready', 'clicked', 'tooSoon'
     const [reactionTimes, setReactionTimes] = useState([]);
     const [startTime, setStartTime] = useState(0);
-    const [endTime, setEndTime] = useState(0);
+    //const [endTime, setEndTime] = useState(0);
     const [timeoutId, setTimeoutId] = useState(null);
 
     const handleClick = () => {
@@ -27,7 +27,7 @@ const ReactionTimeGame = () => {
             setMessage('Too Soon! Click to try again.');
             setGameState('tooSoon');
         } else if (gameState === 'clicked') {
-            setEndTime(Date.now());
+            //setEndTime(Date.now());
             const reactionTime = Date.now() - startTime;
             setReactionTimes([...reactionTimes, reactionTime]);
             setMessage(`Reaction Time: ${reactionTime} ms`);
@@ -57,7 +57,7 @@ const ReactionTimeGame = () => {
                 const username = localStorage.getItem('username');
 
                 try {
-                    await axios.post('http://localhost:8080/scoreSave', {
+                    await axios.post('http://localhost:8080/score/save', {
                         username: username,
                         score: averageTime,
                         gameId: 1,
@@ -102,10 +102,20 @@ const ReactionTimeGame = () => {
                 </div>
                 <div className="lower-section">
                     <div className="left-section">
-                        <p>Try to click as fast as possible after the cue.</p>
+                        <p>How to play: 
+                            <br />1. Click the box to start the game.
+                            <br />2. Wait for the message "Click Now!".
+                            <br />3. Click the box as soon as you see the message.
+                            <br />4. Your reaction time will be displayed.
+                            <br />5. Repeat the steps 5 times to get the average reaction time.
+                        </p>
                     </div>
                     <div className="right-section">
-                        <p>Average Reaction Time will be calculated after 5 attempts.</p>
+                        <p>About the test:
+                            <br /> In addition to measuring your reaction time, this test is affected by the latency of your computer
+                             and monitor. Using a fast computer and low latency / high framerate monitor will improve your score.
+                             
+                        </p>
                     </div>
                 </div>
             </div>

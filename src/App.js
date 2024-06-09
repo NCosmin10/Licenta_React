@@ -14,6 +14,8 @@ import Dashboard from './pages/Stats/Dashboard';
 import ReactionTimeDB from './pages/Stats/ReactionTimeDB';
 import NumberMemoryDB from './pages/Stats/NumberMemoryDB';
 import VerbalMemoryDB from './pages/Stats/VerbalMemoryDB';
+import HigherLowerDB from './pages/Stats/HigherLowerDB';
+import ArithmeticDB from './pages/Stats/ArithmeticDB';
 
 function App() {
   return (
@@ -22,15 +24,17 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/reaction-time-game" element={<ReactionTimeGame />} />
-        <Route path="/number-memory-game" element={<NumberMemoryGame />} />
-        <Route path="/verbal-memory-game" element={<VerbalMemoryGame />} />
-        <Route path="/higher-lower-game" element={<HigherLowerGame />} />
-        <Route path="/arithmetic-game" element={<ArithmeticGame />} />
+        <Route path="/game/reaction-time" element={<ReactionTimeGame />} />
+        <Route path="/game/number-memory" element={<NumberMemoryGame />} />
+        <Route path="/game/verbal-memory" element={<VerbalMemoryGame />} />
+        <Route path="/game/higher-lower" element={<HigherLowerGame />} />
+        <Route path="/game/arithmetic" element={<ArithmeticGame />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/reaction-time-stats" element={<ReactionTimeDB />} />
-        <Route path="/number-memory-stats" element={<NumberMemoryDB />} />
-        <Route path="/verbal-memory-stats" element={<VerbalMemoryDB />} />
+        <Route path="/stats/reaction-time" element={<ReactionTimeDB />} />
+        <Route path="/stats/number-memory" element={<NumberMemoryDB />} />
+        <Route path="/stats/verbal-memory" element={<VerbalMemoryDB />} />
+        <Route path="/stats/higher-lower" element={<HigherLowerDB />} />
+        <Route path="/stats/arithmetic" element={<ArithmeticDB />} />
       </Routes>
     </Router>
   );

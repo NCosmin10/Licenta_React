@@ -8,16 +8,15 @@ const NavBar = () => {
             <div className="logo">COGNI GAMES</div>
             <div className="divider"></div>
             <ul className="top-buttons">
-                <li className="circle-bullet"><Link to="/reaction-time-game">Games</Link></li>
+                <li className="circle-bullet"><Link to="/game/reaction-time">Games</Link></li>
                 <li className="circle-bullet"><Link to="/dashboard">Dashboard</Link></li>
             </ul>
             <div className="divider"></div>
             <ul className="game-links">
-                <li className="square-bullet"><Link to="/reaction-time-game">Reaction Time</Link></li>
-                <li className="square-bullet"><Link to="/number-memory-game">Number Memory</Link></li>
-                <li className="square-bullet"><Link to="/verbal-memory-game">Verbal Memory</Link></li>
-                <li className="square-bullet"><Link to="/higher-lower-game">Higher or Lower</Link></li>
-                <li className="square-bullet"><Link to="/arithmetic-game">Arithmetic</Link></li>
+                <li className="square-bullet"><Link to="/game/reaction-time">Reaction Time</Link></li>
+                <li className="square-bullet"><Link to="/game/number-memory">Number Memory</Link></li>
+                <li className="square-bullet"><Link to="/game/higher-lower">Higher or Lower</Link></li>
+                <li className="square-bullet"><Link to="/game/arithmetic">Arithmetic</Link></li>
             </ul>
         </nav>
     );

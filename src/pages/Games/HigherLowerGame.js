@@ -16,7 +16,7 @@ const HigherLowerGame = () => {
         const username = localStorage.getItem('username');
         
         try {
-            await axios.post('http://localhost:8080/scoreSave', {
+            await axios.post('http://localhost:8080/score/save', {
                 username: username,
                 score: score,
                 gameId: 3,
@@ -81,13 +81,13 @@ const HigherLowerGame = () => {
                     {gameState === 'waiting' && <button onClick={startGame}>Start Game</button>}
                     {gameState === 'playing' && (
                         <div>
-                            <p className="number-display">{currentNumber}</p>
-                            <p className="number-display">{nextNumber} is:</p>
+                            <p className="number-display">is {nextNumber}</p>
                             <div className="buttons">
                                 <button onClick={() => handleComparison('higher')}>Higher</button>
-                                <button onClick={() => handleComparison('lower')}>Lower</button>
                                 <button onClick={() => handleComparison('equal')}>Equal</button>
+                                <button onClick={() => handleComparison('lower')}>Lower</button>
                             </div>
+                            <p className="number-display">than {currentNumber}</p>
                             <div className='time-left'>
                             <p>Time Left: {timeLeft}s</p>
                             </div>
@@ -102,10 +102,17 @@ const HigherLowerGame = () => {
                 </div>
                 <div className="lower-section">
                     <div className="left-section">
-                        <p>Compare the numbers and guess if the next number is higher, lower, or equal.</p>
+                        <p>How to play:
+                            <br />1. Click the button to start the game.
+                            <br />2. Decide if the next number is higher, lower, or equal to the current number.
+                            <br />3. Your score will be based on the number of correct answers within 20 seconds.
+                        </p>
                     </div>
                     <div className="right-section">
-                        <p>Your score will be based on the number of correct guesses within 20 seconds.</p>
+                        <p>About the game:
+                            <br />This game tests your ability to quickly compare numbers and make decisions.
+                            <br />It is designed to help you improve your focus and reaction time.
+                        </p>
                     </div>
                 </div>
             </div>

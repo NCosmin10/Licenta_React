@@ -8,13 +8,14 @@ const HomePage = () => {
     return (
         <div className='home-page'>
         <div className="home-container">
-            <h1>Welcome to Cognitive Games</h1>
+            <h1>Welcome to Cogni Games</h1>
             <hr />
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla varius ornare luctus. Nulla et sapien dictum, euismod 
-                risus ac, fringilla urna. Curabitur lacus erat, molestie sit amet turpis sed, volutpat suscipit ipsum. Morbi 
-                accumsan diam ut sodales lacinia. Aliquam interdum, ligula non accumsan bibendum, odio risus fringilla mi, 
-                et efficitur sapien erat sit amet nibh. Sed et turpis diam. Sed faucibus odio lorem, consectetur ultricies 
-                dolor consequat pellentesque. Sed auctor sollicitudin tortor quis vehicula.</p>
+            <p>Here you can train your mind and reaction time.<br></br>
+            Choose from a variety of games each one improving a different aspect of your cognitive abilities.<br></br>
+            You can also track your progress and see how you improve over time. <br></br>
+            See how you compare to others in the leaderboards.<br></br>
+            Start training now!
+            </p>
             <div className="button-container">
                 <button onClick={() => navigate('/login')}>Login</button>
                 <button onClick={() => navigate('/register')}>Register</button>
