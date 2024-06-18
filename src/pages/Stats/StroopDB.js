@@ -4,12 +4,12 @@ import Layout from '../../components/Layout';
 import './GamesDB.css';
 import axios from 'axios';
 
-const ReactionTimeDB = () => {
+const StroopGameDB = () => {
     const [gameStats, setGameStats] = useState(null);
     const token = localStorage.getItem('authToken');
     const username = localStorage.getItem('username');
     const navigate = useNavigate();
-    const gameId = 3;
+    const gameId = 5;
 
     useEffect(() => {
         // Function to fetch data from the backend
@@ -80,4 +80,4 @@ const ReactionTimeDB = () => {
     );
 }
 
-export default ReactionTimeDB;
+export default StroopGameDB;

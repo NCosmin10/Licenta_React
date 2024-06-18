@@ -8,7 +8,6 @@ const NavBar = () => {
             <div className="logo">COGNI GAMES</div>
             <div className="divider"></div>
             <ul className="top-buttons">
-                <li className="circle-bullet"><Link to="/game/reaction-time">Games</Link></li>
                 <li className="circle-bullet"><Link to="/dashboard">Dashboard</Link></li>
             </ul>
             <div className="divider"></div>
@@ -17,6 +16,8 @@ const NavBar = () => {
                 <li className="square-bullet"><Link to="/game/number-memory">Number Memory</Link></li>
                 <li className="square-bullet"><Link to="/game/higher-lower">Higher or Lower</Link></li>
                 <li className="square-bullet"><Link to="/game/arithmetic">Arithmetic</Link></li>
+                <li className="square-bullet"><Link to="/game/stroop">Stroop Test</Link></li>    
+                <li className="square-bullet"><Link to="/game/simon-says">Simon Says</Link></li>            
             </ul>
         </nav>
     );

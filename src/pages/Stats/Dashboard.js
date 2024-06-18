@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Layout from '../../components/Layout2';
+import Layout from '../../components/Layout';
 import './Dashboard.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';

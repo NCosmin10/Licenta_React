@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Layout from '../../components/Layout2';
+import Layout from '../../components/Layout';
 import './GamesDB.css';
 import axios from 'axios';
+import Chart from 'chart.js/auto';
 
 const ReactionTimeDB = () => {
     const [gameStats, setGameStats] = useState(null);
@@ -10,6 +11,8 @@ const ReactionTimeDB = () => {
     const username = localStorage.getItem('username');
     const navigate = useNavigate();
     const gameId = 1;
+    const chartRef = useRef(null);
+    const chartInstanceRef = useRef(null);
 
     useEffect(() => {
         // Function to fetch data from the backend
@@ -34,6 +37,50 @@ const ReactionTimeDB = () => {
 
         fetchData();
     }, [token, username, gameId]);
+
+    useEffect(() => {
+        if (gameStats) {
+            const ctx = chartRef.current.getContext('2d');
+            
+            // Destroy existing chart instance if it exists
+            if (chartInstanceRef.current) {
+                chartInstanceRef.current.destroy();
+            }
+
+            // Create new chart instance
+            chartInstanceRef.current = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: gameStats.gameDates.map(date => new Date(date).toLocaleDateString()).reverse(),
+                    datasets: [
+                        {
+                            label: 'Reaction Time (ms)',
+                            data: gameStats.gameScores.reverse(),
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            fill: false,
+                        },
+                    ],
+                },
+                options: {
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Date',
+                            },
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Reaction Time (ms)',
+                            },
+                        },
+                    },
+                },
+            });
+        }
+    }, [gameStats]);
 
     if (!gameStats) {
         return <div>Loading...</div>;
@@ -64,13 +111,16 @@ const ReactionTimeDB = () => {
                         <div className="stats-item">Best Score: {personalBestScore} ms</div>
                         <div className="stats-item">Community Score: {communityAvgScore} ms</div>
                     </div>
+                    <div className="graph-container">
+                        <canvas ref={chartRef}></canvas>
+                    </div>
                     <div className="history-container">
                         <h3>Game History</h3>
-                        {gameDates.map((date, index) => (
+                        {gameDates.slice().reverse().map((date, index) => (
                             <div key={index} className="history-row">
                                 <div className="history-item">{new Date(date).toLocaleDateString()}</div>
                                 <div className="history-item">{new Date(date).toLocaleTimeString()}</div>
-                                <div className="history-item">{gameScores[index]} ms</div>
+                                <div className="history-item">{gameScores.slice().reverse()[index]} ms</div>
                             </div>
                         ))}
                     </div>

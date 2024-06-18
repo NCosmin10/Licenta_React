@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Layout from '../../components/Layout2';
+import Layout from '../../components/Layout';
 import './GamesDB.css';
 import axios from 'axios';
 
@@ -66,11 +66,11 @@ const ReactionTimeDB = () => {
                     </div>
                     <div className="history-container">
                         <h3>Game History</h3>
-                        {gameDates.map((date, index) => (
+                        {gameDates.slice().reverse().map((date, index) => (
                             <div key={index} className="history-row">
                                 <div className="history-item">{new Date(date).toLocaleDateString()}</div>
                                 <div className="history-item">{new Date(date).toLocaleTimeString()}</div>
-                                <div className="history-item">{gameScores[index]} points</div>
+                                <div className="history-item">{gameScores.slice().reverse()[index]} points</div>
                             </div>
                         ))}
                     </div>

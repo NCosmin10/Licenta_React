@@ -61,6 +61,12 @@
     text-align: center;
 }
 
+.gamesDB .graph-container {
+    width: 60%;
+    margin-bottom: 20px;
+    background-color: #fbfbf4
+}
+
 .gamesDB .history-container {
     background-color: #fbfbf4; /* Adjust color as needed */
     padding: 20px;
