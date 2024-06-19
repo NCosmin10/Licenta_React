@@ -51,11 +51,11 @@ const ReactionTimeDB = () => {
             chartInstanceRef.current = new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: gameStats.gameDates.map(date => new Date(date).toLocaleDateString()).reverse(),
+                    labels: gameStats.gameDates.map(date => new Date(date).toLocaleDateString()),
                     datasets: [
                         {
                             label: 'Reaction Time (ms)',
-                            data: gameStats.gameScores.reverse(),
+                            data: gameStats.gameScores,
                             borderColor: 'rgba(75, 192, 192, 1)',
                             backgroundColor: 'rgba(75, 192, 192, 0.2)',
                             fill: false,

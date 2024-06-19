@@ -15,7 +15,9 @@ const Dashboard = () => {
         "Reaction_Time": "ms",
         "Number_Memory": "digits",
         "Higher_Lower": "points",
-        "Arithmetic": "points"
+        "Arithmetic": "points",
+        "Stroop": "points",
+        "Simon_Says": "points",
         // Add other games and their units here
     };
 

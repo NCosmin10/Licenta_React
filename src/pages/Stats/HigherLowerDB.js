@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import './GamesDB.css';
 import axios from 'axios';
+import Chart from 'chart.js/auto';
 
-const ReactionTimeDB = () => {
+const SimonSaysDB = () => {
     const [gameStats, setGameStats] = useState(null);
     const token = localStorage.getItem('authToken');
     const username = localStorage.getItem('username');
     const navigate = useNavigate();
     const gameId = 3;
+    const chartRef = useRef(null);
+    const chartInstanceRef = useRef(null);
 
     useEffect(() => {
         // Function to fetch data from the backend
@@ -35,6 +38,50 @@ const ReactionTimeDB = () => {
         fetchData();
     }, [token, username, gameId]);
 
+    useEffect(() => {
+        if (gameStats) {
+            const ctx = chartRef.current.getContext('2d');
+            
+            // Destroy existing chart instance if it exists
+            if (chartInstanceRef.current) {
+                chartInstanceRef.current.destroy();
+            }
+
+            // Create new chart instance
+            chartInstanceRef.current = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: gameStats.gameDates.map(date => new Date(date).toLocaleDateString()),
+                    datasets: [
+                        {
+                            label: 'Numbers Identfied (points)',
+                            data: gameStats.gameScores,
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            fill: false,
+                        },
+                    ],
+                },
+                options: {
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Date',
+                            },
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Numbers Identified (points)',
+                            },
+                        },
+                    },
+                },
+            });
+        }
+    }, [gameStats]);
+
     if (!gameStats) {
         return <div>Loading...</div>;
     }
@@ -46,7 +93,7 @@ const ReactionTimeDB = () => {
         localStorage.removeItem('username');
         navigate('/');
     };
-    
+
     return (
         <Layout>
             <div className='gamesDB'>
@@ -64,6 +111,9 @@ const ReactionTimeDB = () => {
                         <div className="stats-item">Best Score: {personalBestScore} points</div>
                         <div className="stats-item">Community Score: {communityAvgScore} points</div>
                     </div>
+                    <div className="graph-container">
+                        <canvas ref={chartRef}></canvas>
+                    </div>
                     <div className="history-container">
                         <h3>Game History</h3>
                         {gameDates.slice().reverse().map((date, index) => (
@@ -80,4 +130,4 @@ const ReactionTimeDB = () => {
     );
 }
 
-export default ReactionTimeDB;
+export default SimonSaysDB;
