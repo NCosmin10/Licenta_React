@@ -49,6 +49,8 @@ const HigherLowerGame = () => {
 
         if (correct) {
             setScore(score + 1);
+        }else {
+            setTimeLeft(timeLeft - 1);
         }
 
         setCurrentNumber(nextNumber);

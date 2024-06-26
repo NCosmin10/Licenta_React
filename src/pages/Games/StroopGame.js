@@ -51,6 +51,7 @@ const StroopGame = () => {
             setMessage('Correct!');
         } else {
             setMessage('Wrong!');
+            setTimeLeft(timeLeft - 1);
         }
         generateNewWord();
     };

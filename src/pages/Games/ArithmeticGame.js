@@ -46,6 +46,8 @@ const ArithmeticGame = () => {
 
         if (correct) {
             setScore(score + 1);
+        }else {
+            setTimeLeft(timeLeft - 1);
         }
 
         setEquation(generateEquation());
