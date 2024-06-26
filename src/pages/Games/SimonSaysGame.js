@@ -53,6 +53,9 @@ const SimonSaysGame = () => {
 
         const newUserSequence = [...userSequence, color];
         setUserSequence(newUserSequence);
+        
+        setHighlightedColor(color);
+        setTimeout(() => setHighlightedColor(''), 200);
 
         if (sequence[newUserSequence.length - 1] !== color) {
             setGameState('finished');

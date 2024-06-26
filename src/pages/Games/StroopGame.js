@@ -4,16 +4,16 @@ import './StroopGame.css';
 import { saveScoreReq } from '../../services/GameServices';
 
 const colors = ["Red", "Green", "Blue", "Yellow"];
-const colorValues = ["#FF0000", "#00FF00", "#0000FF", "#FFFF00"];
+const colorValues = ["#FF0000", "#00FF00", "#0000FF", "#FFD700"]; // Updated yellow color
 
 const StroopGame = () => {
     const [word, setWord] = useState('');
-    const [color, setColor] = useState('');
+    const [wordColor, setWordColor] = useState('');
     const [score, setScore] = useState(0);
     const [timeLeft, setTimeLeft] = useState(20);
     const [gameState, setGameState] = useState('waiting');
     const intervalRef = useRef(null);
-    const [message, setMessage] = useState('Click the correct color of the word');
+    const [message, setMessage] = useState('Click the color that matches the word');
 
     const saveScore = useCallback(async () => {
         const username = localStorage.getItem('username');
@@ -46,7 +46,7 @@ const StroopGame = () => {
     const handleClick = (selectedColor) => {
         if (gameState !== 'playing') return;
 
-        if (color === selectedColor) {
+        if (word === colors[colorValues.indexOf(selectedColor)]) {
             setScore(score + 1);
             setMessage('Correct!');
         } else {
@@ -59,7 +59,7 @@ const StroopGame = () => {
         const randomWord = colors[Math.floor(Math.random() * colors.length)];
         const randomColor = colorValues[Math.floor(Math.random() * colorValues.length)];
         setWord(randomWord);
-        setColor(randomColor);
+        setWordColor(randomColor);
     };
 
     const startGame = () => {
@@ -77,7 +77,7 @@ const StroopGame = () => {
                     {gameState === 'waiting' && <button onClick={startGame}>Start Game</button>}
                     {gameState === 'playing' && (
                         <div>
-                            <p style={{ color: color, fontSize: '2em' }}>{word}</p>
+                            <p style={{ color: wordColor, fontSize: '2em' }}>{word}</p>
                             <div className="color-buttons">
                                 {colorValues.map((colorValue, index) => (
                                     <button
@@ -104,8 +104,8 @@ const StroopGame = () => {
                 <div className="lower-section">
                     <div className="left-section">
                         <p>How to play: 
-                            <br />1. Look at the color of the word displayed.
-                            <br />2. Click the button with the color that matches the color of the word, not the word itself.
+                            <br />1. Look at the word displayed.
+                            <br />2. Click the button with the color that matches the word itself, not the color of the word.
                             <br />3. Your score will be updated based on your response.
                             <br />4. The game lasts for 20 seconds, try to get as many correct as possible.
                         </p>
