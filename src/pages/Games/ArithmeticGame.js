@@ -24,12 +24,12 @@ const ArithmeticGame = () => {
                     'Authorization': `Bearer ${token}`
                 }
             });
-            alert('Score saved successfully');
+            console.log('Score saved successfully');
         } catch (error) {
             console.error('Error saving the score:', error);
-            alert('Failed to save score');
         }
     }, [score]);
+
 
     useEffect(() => {
         if (gameState === 'playing') {

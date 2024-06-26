@@ -5,6 +5,11 @@
 #15001a         dark purple
 */
 
+body{
+    background: linear-gradient(135deg, #a5cbd9, #f5e3d6); 
+
+}
+
 .game-container {
     display: flex;
     flex-direction: column;

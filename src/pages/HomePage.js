@@ -18,10 +18,9 @@ const HomePage = () => {
                 <h1>Welcome to Cogni Games</h1>
                 <hr />
                 <p>
-                    Here you can train your mind and reaction time.<br />
+                    Here you can train your cognitive skills.<br />
                     Choose from a variety of games each one improving a different aspect of your cognitive abilities.<br />
-                    You can also track your progress and see how you improve over time. <br />
-                    See how you compare to others in the leaderboards.<br />
+                    You can also track your progress, see how you improve over time and see how you compare to others.<br />
                     Start training now!
                 </p>
                 <div className="button-container">

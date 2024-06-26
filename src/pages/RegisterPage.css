@@ -66,3 +66,9 @@
 .register-page .redirect-text a:hover {
     text-decoration: underline;
 }
+
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+    font-size: 1em;
+}
