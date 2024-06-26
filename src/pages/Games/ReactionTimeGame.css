@@ -51,24 +51,24 @@ body{
 }
 
 .get-ready {
-    color: red; /* Change this to your preferred color */
+    color: red;
 }
 
 .click-now {
-    color: green; /* Change this to your preferred color */
+    color: green;
 }
 
 .too-soon {
-    color: #a5cbd9; /* Change this to your preferred color */
+    color: #a5cbd9;
 }
 
 .click-to-start {
-    color: #15001a; /* Change this to your preferred color */
+    color: #15001a;
 }
 
 .reaction-time,
 .average-time {
-    color: #15001a; /* Change this to your preferred color */
+    color: #15001a;
 }
 
 .lower-section {
@@ -82,11 +82,10 @@ body{
     flex: 1;
     background-color: #fbfbf4 !important;
     padding: 20px;
-    /*margin: 10px;*/
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #15001a  !important; /*NU SE SCHIMBA*/
+    color: #15001a  !important;
     font-size: 1em;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -97,11 +96,10 @@ body{
     flex: 1;
     background-color: #fbfbf4 !important;
     padding: 20px;
-    /*margin: 10px;*/
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #15001a  !important; /*NU SE SCHIMBA*/
+    color: #15001a  !important;
     font-size: 1em;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

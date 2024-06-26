@@ -1,30 +1,21 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Layout from '../../components/Layout';
 import './HigherLowerGame.css';
-import axios from 'axios';
+import { saveScoreReq } from '../../services/GameServices';
 
 const HigherLowerGame = () => {
     const [currentNumber, setCurrentNumber] = useState(Math.floor(Math.random() * 100));
     const [nextNumber, setNextNumber] = useState(Math.floor(Math.random() * 100));
     const [score, setScore] = useState(0);
     const [timeLeft, setTimeLeft] = useState(20);
-    const [gameState, setGameState] = useState('waiting'); // 'waiting', 'playing', 'finished'
+    const [gameState, setGameState] = useState('waiting');
     const intervalRef = useRef(null);
 
     const saveScore = useCallback(async () => {
-        const token = localStorage.getItem('authToken');
         const username = localStorage.getItem('username');
         
         try {
-            await axios.post('http://localhost:8080/score/save', {
-                username: username,
-                score: score,
-                gameId: 3,
-            }, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
+            await saveScoreReq(username, score, 3);
             console.log('Score saved successfully');
         } catch (error) {
             console.error('Error saving the score:', error);

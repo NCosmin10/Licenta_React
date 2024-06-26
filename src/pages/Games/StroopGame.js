@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Layout from '../../components/Layout';
 import './StroopGame.css';
-import axios from 'axios';
+import { saveScoreReq } from '../../services/GameServices';
 
 const colors = ["Red", "Green", "Blue", "Yellow"];
 const colorValues = ["#FF0000", "#00FF00", "#0000FF", "#FFFF00"];
@@ -11,24 +11,15 @@ const StroopGame = () => {
     const [color, setColor] = useState('');
     const [score, setScore] = useState(0);
     const [timeLeft, setTimeLeft] = useState(20);
-    const [gameState, setGameState] = useState('waiting'); // 'waiting', 'playing', 'finished'
+    const [gameState, setGameState] = useState('waiting');
     const intervalRef = useRef(null);
     const [message, setMessage] = useState('Click the correct color of the word');
 
     const saveScore = useCallback(async () => {
-        const token = localStorage.getItem('authToken');
         const username = localStorage.getItem('username');
         
         try {
-            await axios.post('http://localhost:8080/score/save', {
-                username: username,
-                score: score,
-                gameId: 5,
-            }, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
+            await saveScoreReq(username, score, 5);
             console.log('Score saved successfully');
         } catch (error) {
             console.error('Error saving the score:', error);

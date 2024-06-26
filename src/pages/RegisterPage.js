@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import './RegisterPage.css';
+import { register } from '../services/AuthServices';
 
 const RegisterPage = () => {
     const [username, setUsername] = useState('');
@@ -21,11 +22,7 @@ const RegisterPage = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:8080/auth/register', {
-                username,
-                email,
-                password,
-            });
+            const response = await register(username, email, password);
             if (response.data === 'Registration successful') {
                 navigate('/login'); // Redirect to the login page
             } else {

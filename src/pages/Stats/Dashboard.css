@@ -13,18 +13,18 @@
 }
 
 .top-container {
-    background-color: #f5e3d6; /* Adjust color as needed */
+    background-color: #f5e3d6;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
     margin-bottom: 20px;
-    width: 60%; /* Adjust width as needed */
+    width: 60%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .top-container h2 {
     margin: 10px 0;
-    color: #15001a; /* Adjust color as needed */
+    color: #15001a;
 }
 
 .button-group {
@@ -49,11 +49,11 @@
 }
 
 .stats-container {
-    background-color: #fbfbf4; /* Adjust color as needed */
+    background-color: #fbfbf4;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-    width: 60%; /* Adjust width as needed */
+    width: 60%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -62,10 +62,10 @@
     justify-content: space-between;
     margin-bottom: 15px;
     padding: 10px;
-    background-color: #a5cbd9; /* Adjust color as needed */
+    background-color: #a5cbd9;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    color: #15001a; /* Adjust color as needed */
+    color: #15001a;
 }
 
 .stats-item {

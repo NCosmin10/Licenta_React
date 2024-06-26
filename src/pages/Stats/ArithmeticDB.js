@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import './GamesDB.css';
-import axios from 'axios';
 import Chart from 'chart.js/auto';
+import { fetchGameStats } from '../../services/StatsService';
 
 const SimonSaysDB = () => {
     const [gameStats, setGameStats] = useState(null);
@@ -15,14 +15,9 @@ const SimonSaysDB = () => {
     const chartInstanceRef = useRef(null);
 
     useEffect(() => {
-        // Function to fetch data from the backend
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/score/${username}/${gameId}`, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
+                const response = await fetchGameStats(username, gameId, token);
                 if (response.status === 200) {
                     const data = response.data;
                     console.log(data);
@@ -42,12 +37,10 @@ const SimonSaysDB = () => {
         if (gameStats) {
             const ctx = chartRef.current.getContext('2d');
             
-            // Destroy existing chart instance if it exists
             if (chartInstanceRef.current) {
                 chartInstanceRef.current.destroy();
             }
 
-            // Create new chart instance
             chartInstanceRef.current = new Chart(ctx, {
                 type: 'line',
                 data: {

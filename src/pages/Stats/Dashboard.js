@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import './Dashboard.css';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { fetchUserScores } from '../../services/StatsService';
 
 const Dashboard = () => {
     const [games, setGames] = useState([]);
@@ -18,18 +18,12 @@ const Dashboard = () => {
         "Arithmetic": "points",
         "Stroop": "points",
         "Simon_Says": "points",
-        // Add other games and their units here
     };
 
     useEffect(() => {
-        // Function to fetch data from the backend
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/score/${username}`, {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
+                const response = await fetchUserScores(username, token);
                 if (response.status === 200) {
                     const data = response.data;
                     setGames(data);

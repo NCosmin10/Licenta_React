@@ -1,33 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../../components/Layout';
 import './NumberMemoryGame.css';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { saveScoreReq } from '../../services/GameServices';
 
 const NumberMemoryGame = () => {
     const [numberToShow, setNumberToShow] = useState('');
     const [generatedNumber, setGeneratedNumber] = useState('');
     const [userInput, setUserInput] = useState('');
-    const [gameState, setGameState] = useState('waiting'); // 'waiting', 'showing', 'input', 'finished'
+    const [gameState, setGameState] = useState('waiting');
     const [digits, setDigits] = useState(1);
     const [score, setScore] = useState(0);
     const [countdown, setCountdown] = useState(0);
 
-    // Save the average time to the backend
     const saveScore = async () => {
-        const token = localStorage.getItem('authToken');
         const username = localStorage.getItem('username');
 
         try {
-            await axios.post('http://localhost:8080/score/save', {
-                username: username,
-                score: score,
-                gameId: 2,
-            }, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
+            await saveScoreReq(username, score, 2);
             console.log('Score saved successfully');
         } catch (error) {
             console.error('Error saving the score:', error);

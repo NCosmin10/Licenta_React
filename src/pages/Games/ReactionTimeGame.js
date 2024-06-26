@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../../components/Layout';
 import './ReactionTimeGame.css';
-import axios from 'axios';
+import { saveScoreReq } from '../../services/GameServices';
 
 const ReactionTimeGame = () => {
     const [message, setMessage] = useState('Click to Start');
-    const [gameState, setGameState] = useState('waiting'); // 'waiting', 'ready', 'clicked', 'tooSoon'
+    const [gameState, setGameState] = useState('waiting');
     const [reactionTimes, setReactionTimes] = useState([]);
     const [startTime, setStartTime] = useState(0);
-    //const [endTime, setEndTime] = useState(0);
     const [timeoutId, setTimeoutId] = useState(null);
 
     const handleClick = () => {
         if (gameState === 'waiting') {
             setMessage('Get Ready...');
             setGameState('ready');
-            const delay = Math.floor(Math.random() * 3000) + 2000; // Random delay between 2 to 5 seconds
+            const delay = Math.floor(Math.random() * 3000) + 2000;
             const id = setTimeout(() => {
                 setMessage('Click Now!');
                 setStartTime(Date.now());
@@ -27,7 +26,6 @@ const ReactionTimeGame = () => {
             setMessage('Too Soon! Click to try again.');
             setGameState('tooSoon');
         } else if (gameState === 'clicked') {
-            //setEndTime(Date.now());
             const reactionTime = Date.now() - startTime;
             setReactionTimes([...reactionTimes, reactionTime]);
             setMessage(`Reaction Time: ${reactionTime} ms`);
@@ -35,7 +33,7 @@ const ReactionTimeGame = () => {
         } else if (gameState === 'tooSoon') {
             setMessage('Get Ready...');
             setGameState('ready');
-            const delay = Math.floor(Math.random() * 3000) + 2000; // Random delay between 2 to 5 seconds
+            const delay = Math.floor(Math.random() * 3000) + 2000;
             const id = setTimeout(() => {
                 setMessage('Click Now!');
                 setStartTime(Date.now());
@@ -46,26 +44,16 @@ const ReactionTimeGame = () => {
     };
 
     useEffect(() => {
-        if (reactionTimes.length === 5) { // Changed to 5 attempts
+        if (reactionTimes.length === 5) {
             const averageTime = reactionTimes.reduce((a, b) => a + b, 0) / reactionTimes.length;
             setMessage(`Average Reaction Time: ${averageTime.toFixed(2)} ms`);
-            setReactionTimes([]); // Reset reaction times
+            setReactionTimes([]);
 
-            // Save the average time to the backend
             const saveScore = async () => {
-                const token = localStorage.getItem('authToken');
                 const username = localStorage.getItem('username');
 
                 try {
-                    await axios.post('http://localhost:8080/score/save', {
-                        username: username,
-                        score: averageTime,
-                        gameId: 1,
-                    }, {
-                        headers: {
-                            'Authorization': `Bearer ${token}`
-                        }
-                    });
+                    await saveScoreReq(username, averageTime, 1);
                     console.log('Score saved successfully');
                 } catch (error) {
                     console.error('Error saving the score:', error);

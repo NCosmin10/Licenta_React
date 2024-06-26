@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import './LoginPage.css';
+import { login } from '../services/AuthServices';
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
@@ -14,10 +15,7 @@ const LoginPage = () => {
         setError(''); // Clear previous error messages
 
         try {
-            const response = await axios.post('http://localhost:8080/login', {
-                username,
-                password,
-            });
+            const response = await login(username, password);
 
             if (response.status === 200) {
                 localStorage.setItem('authToken', response.data.token);

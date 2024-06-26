@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Layout from '../../components/Layout';
 import './SimonSaysGame.css';
-import axios from 'axios';
+import { saveScoreReq } from '../../services/GameServices';
 
 const colorValues = ["#FF0000", "#00FF00", "#0000FF", "#FFFF00"];
 
@@ -9,7 +9,7 @@ const SimonSaysGame = () => {
     const [sequence, setSequence] = useState([]);
     const [userSequence, setUserSequence] = useState([]);
     const [score, setScore] = useState(0);
-    const [gameState, setGameState] = useState('waiting'); // 'waiting', 'showing', 'playing', 'finished'
+    const [gameState, setGameState] = useState('waiting');
     const [message, setMessage] = useState('Click the start button to begin.');
     const [showingIndex, setShowingIndex] = useState(0);
     const [highlightedColor, setHighlightedColor] = useState('');
@@ -68,19 +68,10 @@ const SimonSaysGame = () => {
     };
 
     const saveScore = useCallback(async () => {
-        const token = localStorage.getItem('authToken');
         const username = localStorage.getItem('username');
 
         try {
-            await axios.post('http://localhost:8080/score/save', {
-                username: username,
-                score: score,
-                gameId: 6,
-            }, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
+            await saveScoreReq(username, score, 6);
             console.log('Score saved successfully');
         } catch (error) {
             console.error('Error saving the score:', error);
